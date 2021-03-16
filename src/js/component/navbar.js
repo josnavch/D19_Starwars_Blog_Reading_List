@@ -19,8 +19,7 @@ export const Navbar = () => {
 								data-toggle="dropdown"
 								aria-haspopup="true"
 								aria-expanded="false">
-								Favorites
-								<span className="badge badge-light">4</span>
+								Favorites <span className="badge badge-light"> 4 </span>
 							</button>
 							<div className="dropdown-menu">
 								<a className="dropdown-item" href="#">
