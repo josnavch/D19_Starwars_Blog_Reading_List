@@ -8,6 +8,7 @@ import Errorimage from "../../img/Not_picture_found.jpg";
 
 export const Starships = ({ data }) => {
 	const [starships, setStarships] = useState([]);
+
 	const { store, actions } = useContext(Context);
 
 	function getId(url) {
@@ -16,6 +17,12 @@ export const Starships = ({ data }) => {
 		let str2 = ".jpg";
 		let url2 = imgURL.concat(str1, str2);
 		return url2;
+	}
+	function addNameFavorites(name) {
+		const addNameFavorites = name;
+		console.log("---Props---" + addNameFavorites);
+		setStore({ favorites: addNameFavorites });
+		console.log(store.setFavorite);
 	}
 
 	return (
@@ -52,7 +59,7 @@ export const Starships = ({ data }) => {
 								<a href="#" className="card-link">
 									Lean more
 								</a>
-								<a href="#" className="far fa-heart" />
+								<a className="far fa-heart" onClick={() => addNameFavorites(item.name)} />
 							</div>
 						</div>
 					);

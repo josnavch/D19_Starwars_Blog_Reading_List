@@ -23,7 +23,6 @@ const Layout = () => {
 	const [planets, setPlanets] = useState([]);
 	const [starships, setStarships] = useState([]);
 	const [species, setSpecies] = useState([]);
-	const [favorites, setfavorite] = useState([]);
 
 	return (
 		<div className="d-flex flex-column">
