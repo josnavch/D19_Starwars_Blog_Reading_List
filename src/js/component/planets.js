@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { Context } from "../store/appContext";
@@ -16,6 +17,10 @@ export const Planets = ({ data }) => {
 		let str2 = ".jpg";
 		let url2 = imgURL.concat(str1, str2);
 		return url2;
+	}
+	function getplanetId(url) {
+		const str1 = url.split("/")[url.split("/").length - 2];
+		return str1;
 	}
 
 	return (
@@ -49,9 +54,11 @@ export const Planets = ({ data }) => {
 								</li>
 							</ul>
 							<div className="card-body">
-								<a href="#" className="card-link">
-									Lean more
-								</a>
+								<Link to={"/planetdetails/" + item.name}>
+									<a onClick={() => actions.fetchPlanetDetails(getplanetId(item.url))}>
+										Lean more: {item.name}
+									</a>
+								</Link>
 								<a href="#" className="far fa-heart" />
 							</div>
 						</div>

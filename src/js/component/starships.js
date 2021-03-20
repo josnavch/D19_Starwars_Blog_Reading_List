@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
 
 import Errorimage from "../../img/Not_picture_found.jpg";
+import context from "react-bootstrap/esm/AccordionContext";
 
 export const Starships = ({ data }) => {
 	const [starships, setStarships] = useState([]);
@@ -18,13 +19,19 @@ export const Starships = ({ data }) => {
 		let url2 = imgURL.concat(str1, str2);
 		return url2;
 	}
+	/*
+	const {
+		storefav,
+		actions: { setFavorites }
+	} = useContext(Context);
+
 	function addNameFavorites(name) {
 		const addNameFavorites = name;
 		console.log("---Props---" + addNameFavorites);
-		setStore({ favorites: addNameFavorites });
-		console.log(store.setFavorite);
+		setFavorites(storefav.favorites.concat(name));
+		console.log(storefav.setFavorites);
 	}
-
+*/
 	return (
 		<div className="container">
 			<h1>Starships</h1>
@@ -59,7 +66,7 @@ export const Starships = ({ data }) => {
 								<a href="#" className="card-link">
 									Lean more
 								</a>
-								<a className="far fa-heart" onClick={() => addNameFavorites(item.name)} />
+								<a className="far fa-heart" onClick={() => actions.addTask(item.name)} />
 							</div>
 						</div>
 					);

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 import STWImage from "../../img/starwars-icon-7.jpg";
 
@@ -34,16 +35,8 @@ export const Navbar = () => {
 								Favorites <span className="badge badge-light"> 4 </span>
 							</button>
 							<div className="dropdown-menu">
-								<a className="dropdown-item" href="#">
-									People
-								</a>
-								<a className="dropdown-item">
-									<Link to="/planets">Planets</Link>
-								</a>
-
-								<a className="dropdown-item" href="#">
-									Starships
-								</a>
+								<li className="list-group-item fas fa-minus-circle ">R2R2</li>
+								<li className="list-group-item fas fa-minus-circle ">ObiWan</li>
 							</div>
 						</div>
 					</Link>
