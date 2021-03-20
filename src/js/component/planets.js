@@ -47,7 +47,7 @@ export const Planets = ({ data }) => {
 								<a href="#" className="card-link">
 									Lean more
 								</a>
-								<i className="far fa-heart" />
+								<a href="#" className="far fa-heart" />
 							</div>
 						</div>
 					);
