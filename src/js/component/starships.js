@@ -1,34 +1,67 @@
 import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 
 import { Context } from "../store/appContext";
+import { bindActionCreators } from "redux";
 
-export const Startships = () => {
+import Errorimage from "../../img/Not_picture_found.jpg";
+
+export const Starships = ({ data }) => {
 	const [starships, setStarships] = useState([]);
+	const { store, actions } = useContext(Context);
+
+	function getId(url) {
+		const imgURL = "https://starwars-visualguide.com/assets/img/starships/";
+		let str1 = url.split("/")[url.split("/").length - 2];
+		let str2 = ".jpg";
+		let url2 = imgURL.concat(str1, str2);
+		return url2;
+	}
 
 	return (
 		<div className="container">
-			<h1>Startships</h1>
+			<h1>Starships</h1>
 			<div className="row flex-row flex-nowrap overflow-auto">
-				<div className="card" style={{ width: "18rem" }}>
-					<img
-						src="https://lumiere-a.akamaihd.net/v1/images/razor-crest-s-arsenal-main_68d42bf7.jpeg?region=164%2C0%2C953%2C536&width=768"
-						className="card-img-top"
-						alt="..."
-					/>
-					<div className="card-body">
-						<h5 className="card-title">Card title</h5>
-						<p className="card-text">
-							Some quick example text to build on the card title and make up the bulk of the cards
-							content.
-						</p>
-						<ul className="list-group list-group-flush">
-							<li className="list-group-item">An item</li>
-							<li className="list-group-item">A second item</li>
-							<li className="list-group-item">A third item</li>
-						</ul>
-					</div>
-				</div>
+				{() => actions.fetchStarships()}
+				{store.starships.map((item, index) => {
+					return (
+						<div className="card col-md-4" key={item.name} style={{ width: "25rem" }}>
+							<img
+								src={getId(item.url)}
+								className="card-img-top"
+								onError={e => ((e.target.onerror = null), (e.target.src = Errorimage))}
+							/>
+							<div className="card-body">
+								<h4 className="card-title">{item.name}</h4>
+							</div>
+							<ul className="list-group list-group-flush">
+								<li className="list-group-item">
+									<strong>Modelo: </strong>
+									{item.model}
+								</li>
+								<li className="list-group-item">
+									<strong>Manufacture: </strong>
+									{item.manufature}
+								</li>
+								<li className="list-group-item">
+									<strong>Passengers: </strong>
+									{item.passengers}
+								</li>
+							</ul>
+							<div className="card-body">
+								<a href="#" className="card-link">
+									Lean more
+								</a>
+								<a href="#" className="far fa-heart" />
+							</div>
+						</div>
+					);
+				})}
 			</div>
 		</div>
 	);
+};
+
+Starships.propTypes = {
+	data: PropTypes.node.isRequired
 };

@@ -4,13 +4,18 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
 
+import Errorimage from "../../img/Not_picture_found.jpg";
+
 export const Planets = ({ data }) => {
 	const [planets, setPlanets] = useState([]);
 	const { store, actions } = useContext(Context);
-	const imgURL = "https://starwars-visualguide.com/assets/img/planets/";
 
 	function getId(url) {
-		return url.split("/")[url.split("/").length - 2];
+		const imgURL = "https://starwars-visualguide.com/assets/img/planets/";
+		let str1 = url.split("/")[url.split("/").length - 2];
+		let str2 = ".jpg";
+		let url2 = imgURL.concat(str1, str2);
+		return url2;
 	}
 
 	return (
@@ -22,9 +27,9 @@ export const Planets = ({ data }) => {
 					return (
 						<div className="card col-md-4" key={item.name} style={{ width: "25rem" }}>
 							<img
-								src="https://starwars-visualguide.com/assets/img/planets/3.jpg"
+								src={getId(item.url)}
 								className="card-img-top"
-								alt="..."
+								onError={e => ((e.target.onerror = null), (e.target.src = Errorimage))}
 							/>
 							<div className="card-body">
 								<h5 className="card-title">{item.name}</h5>

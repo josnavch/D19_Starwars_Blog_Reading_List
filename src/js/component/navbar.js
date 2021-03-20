@@ -11,13 +11,16 @@ export const Navbar = () => {
 					<img src={STWImage} width="60" height="60" alt="" />
 				</Link>
 				<a className="nav-link">
-					<Link to="/people">People</Link>
+					<Link to="/people">Character</Link>
 				</a>
 				<a className="nav-link">
 					<Link to="/planets">Planets</Link>
 				</a>
 				<a className="nav-link">
 					<Link to="/starships">Starships</Link>
+				</a>
+				<a className="nav-link">
+					<Link to="/species">Species</Link>
 				</a>
 				<div className="ml-auto">
 					<Link to="/demo">

@@ -7,7 +7,8 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import { People } from "./component/people";
 import { Planets } from "./component/planets";
-import { Startships } from "./component/starships";
+import { Starships } from "./component/starships";
+import { Species } from "./component/species";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -21,6 +22,7 @@ const Layout = () => {
 	const [people, setPeople] = useState([]);
 	const [planets, setPlanets] = useState([]);
 	const [starships, setStarships] = useState([]);
+	const [species, setSpecies] = useState([]);
 	const [favorites, setfavorite] = useState([]);
 
 	return (
@@ -43,11 +45,14 @@ const Layout = () => {
 						</Route>
 
 						<Route exact path="/planets">
-							<Planets data={planets} />
+							<Planets />
 						</Route>
 
 						<Route exact path="/starships">
-							<Startships />
+							<Starships />
+						</Route>
+						<Route exact path="/species">
+							<Species />
 						</Route>
 					</Switch>
 					<Footer />

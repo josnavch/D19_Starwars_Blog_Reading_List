@@ -16,6 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			people: [],
 			planets: [],
 			starships: [],
+			species: [],
 			favorites: []
 		},
 		actions: {
@@ -37,6 +38,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let res = await fetch("https://swapi.dev/api/starships/?format=json");
 				const data = await res.json();
 				setStore({ starships: data.results });
+			},
+			fetchSpecies: async () => {
+				let res = await fetch("https://swapi.dev/api/species/?format=json");
+				const data = await res.json();
+				setStore({ species: data.results });
 			},
 			loadSomeData: () => {
 				/**
