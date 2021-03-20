@@ -10,6 +10,15 @@ export const Navbar = () => {
 				<Link to="/">
 					<img src={STWImage} width="60" height="60" alt="" />
 				</Link>
+				<a className="nav-link">
+					<Link to="/people">People</Link>
+				</a>
+				<a className="nav-link">
+					<Link to="/planets">Planets</Link>
+				</a>
+				<a className="nav-link">
+					<Link to="/starships">Starships</Link>
+				</a>
 				<div className="ml-auto">
 					<Link to="/demo">
 						<div className="btn-group">
@@ -23,17 +32,14 @@ export const Navbar = () => {
 							</button>
 							<div className="dropdown-menu">
 								<a className="dropdown-item" href="#">
-									Action
+									People
 								</a>
-								<a className="dropdown-item" href="#">
-									Another action
+								<a className="dropdown-item">
+									<Link to="/planets">Planets</Link>
 								</a>
+
 								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-								<div className="dropdown-divider" />
-								<a className="dropdown-item" href="#">
-									Separated link
+									Starships
 								</a>
 							</div>
 						</div>
