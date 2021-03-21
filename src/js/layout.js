@@ -5,10 +5,17 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
+
+import { PeopleDetails } from "./views/peopledetails";
+import { PlanetDetails } from "./views/planetdetails";
+import { StarshipsDetails } from "./views/starshipsdetails";
+import { SpeciesDetails } from "./views/speciesdetails";
+
 import { People } from "./component/people";
 import { Planets } from "./component/planets";
 import { Starships } from "./component/starships";
 import { Species } from "./component/species";
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -23,6 +30,10 @@ const Layout = () => {
 	const [planets, setPlanets] = useState([]);
 	const [starships, setStarships] = useState([]);
 	const [species, setSpecies] = useState([]);
+	const [peopledetails, setPeopleDetail] = useState([]);
+	const [planetdetails, setPlanetDetail] = useState([]);
+	const [starshipsdetails, setStarshipDetail] = useState([]);
+	const [speciesdetails, setSpeciesDetail] = useState([]);
 
 	return (
 		<div className="d-flex flex-column">
@@ -42,16 +53,26 @@ const Layout = () => {
 						<Route exact path="/people">
 							<People />
 						</Route>
-
+						<Route exact path="/peopledetails/:theid">
+							<PeopleDetails />
+						</Route>
 						<Route exact path="/planets">
 							<Planets />
 						</Route>
-
+						<Route exact path="/planetdetail/:theid">
+							<PlanetDetails />
+						</Route>
 						<Route exact path="/starships">
 							<Starships />
 						</Route>
+						<Route exact path="/starshipdetail/:theid">
+							<StarshipsDetails />
+						</Route>
 						<Route exact path="/species">
 							<Species />
+						</Route>
+						<Route exact path="/speciesdetails/:theid">
+							<SpeciesDetails />
 						</Route>
 					</Switch>
 					<Footer />

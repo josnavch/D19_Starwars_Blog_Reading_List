@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
@@ -18,6 +19,10 @@ export const People = ({ data }) => {
 		return url2;
 	}
 
+	function getpeopleId(url) {
+		const str1 = url.split("/")[url.split("/").length - 2];
+		return str1;
+	}
 	return (
 		<div className="container">
 			<h1>Character</h1>
@@ -49,9 +54,11 @@ export const People = ({ data }) => {
 								</li>
 							</ul>
 							<div className="card-body">
-								<a href="#" className="card-link">
-									Lean more
-								</a>
+								<Link to={"/peopledetails/" + item.name}>
+									<a onClick={() => actions.fetchPeopleDetailsGET(getpeopleId(item.url))}>
+										Lean more: {item.name}
+									</a>
+								</Link>
 								<a href="#" className="far fa-heart" />
 							</div>
 						</div>

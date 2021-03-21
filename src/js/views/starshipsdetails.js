@@ -1,19 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { bindActionCreators } from "redux";
 
-import Errorimage from "../../img/Not_picture_found.jpg";
-
-export const Planetdetails = props => {
+export const StarshipsDetail = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
-
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element:</h1>
+			<h1 className="display-4">This will show the demo element: </h1>
 
 			<hr className="my-4" />
 
@@ -26,6 +21,6 @@ export const Planetdetails = props => {
 	);
 };
 
-Planetdetails.propTypes = {
+StarshipsDetail.propTypes = {
 	match: PropTypes.object
 };

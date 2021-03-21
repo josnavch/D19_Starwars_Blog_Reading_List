@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
@@ -18,6 +19,11 @@ export const Starships = ({ data }) => {
 		let str2 = ".jpg";
 		let url2 = imgURL.concat(str1, str2);
 		return url2;
+	}
+
+	function getstarshipId(url) {
+		const str1 = url.split("/")[url.split("/").length - 2];
+		return str1;
 	}
 	/*
 	const {
@@ -63,9 +69,11 @@ export const Starships = ({ data }) => {
 								</li>
 							</ul>
 							<div className="card-body">
-								<a href="#" className="card-link">
-									Lean more
-								</a>
+								<Link to={"/starshipsdetails/" + item.name}>
+									<a onClick={() => actions.fetchStarshipDetailsGET(getstarshipId(item.url))}>
+										Lean more: {item.name}
+									</a>
+								</Link>
 								<a className="far fa-heart" onClick={() => actions.addTask(item.name)} />
 							</div>
 						</div>

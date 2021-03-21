@@ -7,8 +7,9 @@ import { bindActionCreators } from "redux";
 
 import Errorimage from "../../img/Not_picture_found.jpg";
 
-export const Planets = ({ data }) => {
+export const Planets = () => {
 	const [planets, setPlanets] = useState([]);
+
 	const { store, actions } = useContext(Context);
 
 	function getId(url) {
@@ -55,7 +56,7 @@ export const Planets = ({ data }) => {
 							</ul>
 							<div className="card-body">
 								<Link to={"/planetdetails/" + item.name}>
-									<a onClick={() => actions.fetchPlanetDetails(getplanetId(item.url))}>
+									<a onClick={() => actions.fetchPlanetDetailsGET(getplanetId(item.url))}>
 										Lean more: {item.name}
 									</a>
 								</Link>

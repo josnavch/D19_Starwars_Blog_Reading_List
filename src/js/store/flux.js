@@ -14,10 +14,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			people: [],
+			peopledetail: [],
 			planets: [],
-			planetdetails: [],
+			planetdetail: [],
 			starships: [],
+			starshipdetail: [],
 			species: [],
+			speciesdetail: [],
 			favorites: []
 		},
 		actions: {
@@ -30,27 +33,78 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const data = await res.json();
 				setStore({ people: data.results });
 			},
+
+			fetchPeopleDetailsGET: async id => {
+				let url = "https://swapi.dev/api/people/" + id + "/?format=json";
+				const config = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(url, config);
+				const json = await response.json();
+				console.log("---json---", json);
+				setStore({ peopledetail: json.results });
+			},
+
 			fetchPlanets: async () => {
 				let res = await fetch("https://swapi.dev/api/planets/?format=json");
 				const data = await res.json();
 				setStore({ planets: data.results });
 			},
-			fetchPlanetDetails: async id => {
+
+			fetchPlanetDetailsGET: async id => {
 				let url = "https://swapi.dev/api/planets/" + id + "/?format=json";
-				console.log(url);
-				let res = await fetch(url);
-				const data = await res.json();
-				setStore({ planetdetails: data.results });
+				const config = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(url, config);
+				const json = await response.json();
+				console.log("---json---", json);
+				setStore({ planetdetail: json.results });
 			},
+
 			fetchStarships: async () => {
 				let res = await fetch("https://swapi.dev/api/starships/?format=json");
 				const data = await res.json();
 				setStore({ starships: data.results });
 			},
+			fetchStarshipDetailsGET: async id => {
+				let url = "https://swapi.dev/api/starships/" + id + "/?format=json";
+				const config = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(url, config);
+				const json = await response.json();
+				console.log("---json---", json);
+				setStore({ starshipdetail: json.results });
+			},
+
 			fetchSpecies: async () => {
 				let res = await fetch("https://swapi.dev/api/species/?format=json");
 				const data = await res.json();
 				setStore({ species: data.results });
+			},
+
+			fetchSpeciesDetailsGET: async id => {
+				let url = "https://swapi.dev/api/species/" + id + "/?format=json";
+				const config = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}
+				};
+				const response = await fetch(url, config);
+				const json = await response.json();
+				console.log("---json---", json);
+				setStore({ speciesdetail: json.results });
 			},
 			setFavorites: (arr = []) => {
 				setStore({
