@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
 
+import "../../styles/cards.scss";
+
 import Errorimage from "../../img/Not_picture_found.jpg";
 
 export const Planets = () => {
@@ -26,7 +28,7 @@ export const Planets = () => {
 
 	return (
 		<div className="container">
-			<h1>Planets</h1>
+			<h1 className="title">Planets</h1>
 			<div className="row flex-row flex-nowrap overflow-auto">
 				{() => actions.fetchPlanets()}
 				{store.planets.map((item, index) => {

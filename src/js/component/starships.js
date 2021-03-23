@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
 
+import "../../styles/cards.scss";
+
 import Errorimage from "../../img/Not_picture_found.jpg";
 
 export const Starships = ({ data }) => {
@@ -41,7 +43,7 @@ export const Starships = ({ data }) => {
 
 	return (
 		<div className="container">
-			<h1>Starships</h1>
+			<h1 className="title">Starships</h1>
 			<div className="row flex-row flex-nowrap overflow-auto">
 				{() => actions.fetchStarships()}
 				{store.starships.map((item, index) => {

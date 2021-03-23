@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
 
+import "../../styles/cards.scss";
+
 import Errorimage from "../../img/Not_picture_found.jpg";
 
 export const People = ({ data }) => {
@@ -26,7 +28,7 @@ export const People = ({ data }) => {
 
 	return (
 		<div className="container">
-			<h1>Character</h1>
+			<h1 className="title">Character</h1>
 			<div className="row flex-row flex-nowrap overflow-auto">
 				{() => actions.fetchPeople()}
 				{store.people.map((item, index) => {
