@@ -5,6 +5,29 @@ import { Context } from "../store/appContext";
 import STWImage from "../../img/starwars-icon-7.jpg";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+
+	function CountFav() {
+		let x = store.favorites.length;
+		return x;
+	}
+
+	const ListFavorites = store.favorites.map((fav, index) => {
+		return (
+			<a
+				href="#"
+				className="dropdown-item list-group-item-action"
+				onClick={() => {
+					actions.delFavorite(fav.name);
+				}}
+				key={index}
+				id={index}>
+				{fav.name}
+				&nbsp;&nbsp;
+				<i className="fa fa-trash" />
+			</a>
+		);
+	});
 	return (
 		<div className="container">
 			<nav className="navbar navbar-light bg-light mb-3">
@@ -24,22 +47,17 @@ export const Navbar = () => {
 					<Link to="/species">Species</Link>
 				</a>
 				<div className="ml-auto">
-					<Link to="/demo">
-						<div className="btn-group">
-							<button
-								type="button"
-								className="btn btn-primary dropdown-toggle"
-								data-toggle="dropdown"
-								aria-haspopup="true"
-								aria-expanded="false">
-								Favorites <span className="badge badge-light"> 4 </span>
-							</button>
-							<div className="dropdown-menu">
-								<li className="list-group-item fas fa-minus-circle ">R2R2</li>
-								<li className="list-group-item fas fa-minus-circle ">ObiWan</li>
-							</div>
-						</div>
-					</Link>
+					<div className="btn-group">
+						<button
+							type="button"
+							className="btn btn-primary dropdown-toggle"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false">
+							Favorites <span className="badge badge-light"> {CountFav()} </span>
+						</button>
+						<div className="dropdown-menu">{ListFavorites}</div>
+					</div>
 				</div>
 			</nav>
 		</div>

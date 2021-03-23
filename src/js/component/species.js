@@ -55,12 +55,16 @@ export const Species = ({ data }) => {
 								</li>
 							</ul>
 							<div className="card-body">
-								<Link to={"/speciesdetails/" + item.name}>
-									<a onClick={() => actions.fetchSpeciesDetailsGET(getspeciesId(item.url))}>
-										Lean more: {item.name}
-									</a>
+								<Link
+									className="btn btn-outline-success float-left"
+									to={"/speciesdetails/" + getspeciesId(item.url)}>
+									Lean more: {item.name}
 								</Link>
-								<a href="#" className="far fa-heart" />
+								{"   "}
+								<button
+									className="btn btn-outline-secondary far fa-heart float-right"
+									onClick={() => actions.addFavorites(item.name, "species")}
+								/>
 							</div>
 						</div>
 					);

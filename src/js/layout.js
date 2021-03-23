@@ -3,8 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
 
 import { PeopleDetails } from "./views/peopledetails";
 import { PlanetDetails } from "./views/planetdetails";
@@ -26,14 +24,6 @@ const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
-	const [people, setPeople] = useState([]);
-	const [planets, setPlanets] = useState([]);
-	const [starships, setStarships] = useState([]);
-	const [species, setSpecies] = useState([]);
-	const [peopledetails, setPeopleDetail] = useState([]);
-	const [planetdetails, setPlanetDetail] = useState([]);
-	const [starshipsdetails, setStarshipDetail] = useState([]);
-	const [speciesdetails, setSpeciesDetail] = useState([]);
 
 	return (
 		<div className="d-flex flex-column">
@@ -44,34 +34,29 @@ const Layout = () => {
 						<Route exact path="/">
 							<Home />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
 						<Route exact path="/people">
 							<People />
 						</Route>
-						<Route exact path="/peopledetails/:theid">
+						<Route path="/peopledetails/:id">
 							<PeopleDetails />
 						</Route>
 						<Route exact path="/planets">
 							<Planets />
 						</Route>
-						<Route exact path="/planetdetail/:theid">
+						<Route path="/planetdetails/:id">
 							<PlanetDetails />
 						</Route>
+
 						<Route exact path="/starships">
 							<Starships />
 						</Route>
-						<Route exact path="/starshipdetail/:theid">
+						<Route path="/starshipsdetails/:id">
 							<StarshipsDetails />
 						</Route>
 						<Route exact path="/species">
 							<Species />
 						</Route>
-						<Route exact path="/speciesdetails/:theid">
+						<Route path="/speciesdetails/:id">
 							<SpeciesDetails />
 						</Route>
 					</Switch>

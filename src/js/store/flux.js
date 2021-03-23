@@ -1,26 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 			people: [],
-			peopledetail: [],
 			planets: [],
-			planetdetail: [],
 			starships: [],
-			starshipdetail: [],
 			species: [],
-			speciesdetail: [],
 			favorites: []
 		},
 		actions: {
@@ -34,57 +18,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ people: data.results });
 			},
 
-			fetchPeopleDetailsGET: async id => {
-				let url = "https://swapi.dev/api/people/" + id + "/?format=json";
-				const config = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
-					}
-				};
-				const response = await fetch(url, config);
-				const json = await response.json();
-				console.log("---json---", json);
-				setStore({ peopledetail: json.results });
-			},
-
 			fetchPlanets: async () => {
 				let res = await fetch("https://swapi.dev/api/planets/?format=json");
 				const data = await res.json();
 				setStore({ planets: data.results });
 			},
 
-			fetchPlanetDetailsGET: async id => {
-				let url = "https://swapi.dev/api/planets/" + id + "/?format=json";
-				const config = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
-					}
-				};
-				const response = await fetch(url, config);
-				const json = await response.json();
-				console.log("---json---", json);
-				setStore({ planetdetail: json.results });
-			},
-
 			fetchStarships: async () => {
 				let res = await fetch("https://swapi.dev/api/starships/?format=json");
 				const data = await res.json();
 				setStore({ starships: data.results });
-			},
-			fetchStarshipDetailsGET: async id => {
-				let url = "https://swapi.dev/api/starships/" + id + "/?format=json";
-				const config = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
-					}
-				};
-				const response = await fetch(url, config);
-				const json = await response.json();
-				console.log("---json---", json);
-				setStore({ starshipdetail: json.results });
 			},
 
 			fetchSpecies: async () => {
@@ -93,52 +36,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ species: data.results });
 			},
 
-			fetchSpeciesDetailsGET: async id => {
-				let url = "https://swapi.dev/api/species/" + id + "/?format=json";
-				const config = {
-					method: "GET",
-					headers: {
-						"Content-type": "application/json"
+			addFavorites: (name, type) => {
+				const store = getStore();
+				let flag = 0;
+				store.favorites.map(each => {
+					if (each.name == name) {
+						flag = 1;
 					}
-				};
-				const response = await fetch(url, config);
-				const json = await response.json();
-				console.log("---json---", json);
-				setStore({ speciesdetail: json.results });
-			},
-			setFavorites: (arr = []) => {
-				setStore({
-					favorites: arr
 				});
+				if (flag == 0) {
+					setStore({ favorites: [...store.favorites, { name: name, type: type }] });
+					//	console.log(store.favorites.length);
+				}
 			},
-			addTask: title => {
-				setStore({ favorites: title });
-			},
-			deleteTodo: id => {
-				dispatcher.dispatch({
-					type: "DELETE_TODO",
-					id
-				});
+
+			delFavorite: name => {
+				const store = getStore();
+				console.log(name);
+				let newFavorites = store.favorites.filter(fav => fav.name != name);
+				console.log(newFavorites);
+				console.log(store.favorites);
+				setStore({ favorites: newFavorites });
+				console.log(store.favorites);
 			},
 
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
                 */
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
 			}
 		}
 	};

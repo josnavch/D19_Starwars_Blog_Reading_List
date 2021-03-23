@@ -6,7 +6,6 @@ import { Context } from "../store/appContext";
 import { bindActionCreators } from "redux";
 
 import Errorimage from "../../img/Not_picture_found.jpg";
-import context from "react-bootstrap/esm/AccordionContext";
 
 export const Starships = ({ data }) => {
 	const [starships, setStarships] = useState([]);
@@ -25,19 +24,21 @@ export const Starships = ({ data }) => {
 		const str1 = url.split("/")[url.split("/").length - 2];
 		return str1;
 	}
-	/*
-	const {
-		storefav,
-		actions: { setFavorites }
-	} = useContext(Context);
 
-	function addNameFavorites(name) {
-		const addNameFavorites = name;
-		console.log("---Props---" + addNameFavorites);
-		setFavorites(storefav.favorites.concat(name));
-		console.log(storefav.setFavorites);
+	function findIndex(Name) {
+		let flag = 0;
+		let x = 0;
+		store.starships.map((each, index) => {
+			if (each.name == Name) {
+				flag = 1;
+				x = index;
+			}
+		});
+		return x;
 	}
-*/
+
+	//console.log(store.starships);
+
 	return (
 		<div className="container">
 			<h1>Starships</h1>
@@ -69,12 +70,16 @@ export const Starships = ({ data }) => {
 								</li>
 							</ul>
 							<div className="card-body">
-								<Link to={"/starshipsdetails/" + item.name}>
-									<a onClick={() => actions.fetchStarshipDetailsGET(getstarshipId(item.url))}>
-										Lean more: {item.name}
-									</a>
+								<Link
+									className="btn btn-outline-success float-left"
+									to={"/starshipsdetails/" + findIndex(item.name)}>
+									Lean more...
 								</Link>
-								<a className="far fa-heart" onClick={() => actions.addTask(item.name)} />
+								{"   "}
+								<button
+									className="btn btn-outline-secondary far fa-heart float-right"
+									onClick={() => actions.addFavorites(item.name, "starship")}
+								/>
 							</div>
 						</div>
 					);

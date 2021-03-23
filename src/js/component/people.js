@@ -23,6 +23,7 @@ export const People = ({ data }) => {
 		const str1 = url.split("/")[url.split("/").length - 2];
 		return str1;
 	}
+
 	return (
 		<div className="container">
 			<h1>Character</h1>
@@ -54,12 +55,16 @@ export const People = ({ data }) => {
 								</li>
 							</ul>
 							<div className="card-body">
-								<Link to={"/peopledetails/" + item.name}>
-									<a onClick={() => actions.fetchPeopleDetailsGET(getpeopleId(item.url))}>
-										Lean more: {item.name}
-									</a>
+								<Link
+									className="btn btn-outline-success float-left"
+									to={"/peopledetails/" + getpeopleId(item.url)}>
+									Lean more: {item.name}
 								</Link>
-								<a href="#" className="far fa-heart" />
+								{"   "}
+								<button
+									className="btn btn-outline-secondary far fa-heart float-right"
+									onClick={() => actions.addFavorites(item.name, "people")}
+								/>
 							</div>
 						</div>
 					);
