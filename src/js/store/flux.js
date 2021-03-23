@@ -52,12 +52,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			delFavorite: name => {
 				const store = getStore();
-				console.log(name);
+				//			console.log(name);
 				let newFavorites = store.favorites.filter(fav => fav.name != name);
-				console.log(newFavorites);
-				console.log(store.favorites);
+				//			console.log(newFavorites);
+				//			console.log(store.favorites);
 				setStore({ favorites: newFavorites });
-				console.log(store.favorites);
+				//			console.log(store.favorites);
 			},
 
 			loadSomeData: () => {
