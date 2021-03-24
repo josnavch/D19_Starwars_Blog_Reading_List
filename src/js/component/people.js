@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
-import { bindActionCreators } from "redux";
 
 import "../../styles/cards.scss";
 
 import Errorimage from "../../img/Not_picture_found.jpg";
 
-export const People = ({ data }) => {
-	const [people, setPlanets] = useState([]);
+export const People = () => {
+	const [] = useState([]);
 	const { store, actions } = useContext(Context);
 
 	function getId(url) {
@@ -31,12 +30,12 @@ export const People = ({ data }) => {
 			<h1 className="title">Character</h1>
 			<div className="row flex-row flex-nowrap overflow-auto">
 				{() => actions.fetchPeople()}
-				{store.people.map((item, index) => {
+				{store.people.map(item => {
 					return (
-						<div className="card col-md-4" key={item.name} style={{ width: "25rem" }}>
+						<div className="card col-sm-4" key={item.name} style={{ width: "18rem" }}>
 							<img
 								src={getId(item.url)}
-								className="card-img-top"
+								className="card-img-top "
 								onError={e => ((e.target.onerror = null), (e.target.src = Errorimage))}
 							/>
 							<div className="card-body">

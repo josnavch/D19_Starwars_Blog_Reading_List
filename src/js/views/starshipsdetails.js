@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { Context } from "../store/appContext";
+import "../../styles/cards.scss";
 
 import { bindActionCreators } from "redux";
 
@@ -24,7 +25,7 @@ export const StarshipsDetails = props => {
 	return (
 		<div className="container">
 			<div className="row">
-				<div className="col-md-12 align-self-center pb-4">
+				<div className="col-md-12 align-self-center pb-4 title">
 					<h2>{store.starships[index].name}</h2>
 				</div>
 			</div>
@@ -36,7 +37,7 @@ export const StarshipsDetails = props => {
 						onError={e => ((e.target.onerror = null), (e.target.src = Errorimage))}
 					/>
 				</div>
-				<div className="col-ms">
+				<div className="col-ms align-self-center pb-2 title">
 					<ul>
 						<li>
 							<b>Modelo: </b> {store.starships[index].model}
@@ -79,7 +80,7 @@ export const StarshipsDetails = props => {
 			</div>
 			<div className="row">
 				<div className="col-md-12 align-self-center pt-4">
-					<Link to="/starships" className="btn btn-outline-secondary btn-lg">
+					<Link to="/starships" className="btn btn-outline-warning btn-lg">
 						<span>Go Back</span>
 					</Link>
 				</div>

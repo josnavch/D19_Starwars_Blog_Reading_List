@@ -1,11 +1,15 @@
 import React from "react";
-import rigoImage from "../../img/rigo-baby.jpg";
+import SWImage from "../../img/StarWars-logo.png";
 
 import "../../styles/home.scss";
 
 export const Home = () => (
 	<div className="text-center mt-5">
+		<p>
+			<img src={SWImage} className="logo_central" />
+		</p>
 		<div className="fade" />
+
 		<section className="star-wars">
 			<div className="crawl">
 				<div className="title">

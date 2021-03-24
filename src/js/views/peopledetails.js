@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 
+import "../../styles/cards.scss";
+
 import Errorimage from "../../img/Not_picture_found.jpg";
 
 export const PeopleDetails = props => {
@@ -27,7 +29,7 @@ export const PeopleDetails = props => {
 		<div>
 			<div className="container">
 				<div className="row">
-					<div className="col-md-12 align-self-center pb-4">
+					<div className="col-md-12 align-self-center pb-4 title">
 						<h2>{store.people[index].name}</h2>
 					</div>
 				</div>
@@ -39,7 +41,7 @@ export const PeopleDetails = props => {
 							onError={e => ((e.target.onerror = null), (e.target.src = Errorimage))}
 						/>
 					</div>
-					<div className="col-ms align-self-center pb-2">
+					<div className="col-ms align-self-center pb-2 title">
 						<ul>
 							<li>
 								<b>Height: </b> {store.people[index].height}
@@ -67,7 +69,7 @@ export const PeopleDetails = props => {
 				</div>
 				<div className="row">
 					<div className="col-md-12 align-self-center pt-4">
-						<Link to="/people" className="btn btn-outline-secondary btn-lg">
+						<Link to="/people" className="btn btn-outline-warning btn-lg">
 							<span>Go Back</span>
 						</Link>
 					</div>

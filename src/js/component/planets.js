@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { Context } from "../store/appContext";
-import { bindActionCreators } from "redux";
 
 import "../../styles/cards.scss";
 
 import Errorimage from "../../img/Not_picture_found.jpg";
 
 export const Planets = () => {
-	const [planets, setPlanets] = useState([]);
+	const [] = useState([]);
 
 	const { store, actions } = useContext(Context);
 
@@ -31,7 +30,7 @@ export const Planets = () => {
 			<h1 className="title">Planets</h1>
 			<div className="row flex-row flex-nowrap overflow-auto">
 				{() => actions.fetchPlanets()}
-				{store.planets.map((item, index) => {
+				{store.planets.map(item => {
 					return (
 						<div className="card col-md-4" key={item.name} style={{ width: "25rem" }}>
 							<img

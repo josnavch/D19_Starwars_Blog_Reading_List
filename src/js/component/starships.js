@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
-import { bindActionCreators } from "redux";
 
 import "../../styles/cards.scss";
 
 import Errorimage from "../../img/Not_picture_found.jpg";
 
-export const Starships = ({ data }) => {
-	const [starships, setStarships] = useState([]);
+export const Starships = () => {
+	const [] = useState([]);
 
 	const { store, actions } = useContext(Context);
 
@@ -22,17 +21,10 @@ export const Starships = ({ data }) => {
 		return url2;
 	}
 
-	function getstarshipId(url) {
-		const str1 = url.split("/")[url.split("/").length - 2];
-		return str1;
-	}
-
 	function findIndex(Name) {
-		let flag = 0;
 		let x = 0;
 		store.starships.map((each, index) => {
 			if (each.name == Name) {
-				flag = 1;
 				x = index;
 			}
 		});
@@ -46,7 +38,7 @@ export const Starships = ({ data }) => {
 			<h1 className="title">Starships</h1>
 			<div className="row flex-row flex-nowrap overflow-auto">
 				{() => actions.fetchStarships()}
-				{store.starships.map((item, index) => {
+				{store.starships.map(item => {
 					return (
 						<div className="card col-md-4" key={item.name} style={{ width: "25rem" }}>
 							<img

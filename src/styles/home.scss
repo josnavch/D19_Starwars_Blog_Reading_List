@@ -5,11 +5,16 @@ body {
   background-image: url("../img/starwars_bg.png");
   overflow: hidden;
 }
+.logo_central {
+    width: 600px;
+    border-style: none;
+    background: #fff0;
+}
 
 .fade {
   position: relative;
   width: 100%;
-  min-height: 60vh;
+  min-height: 30vh;
   top: -25px;
   background-image: linear-gradient(0deg, transparent, black 75%);
   z-index: 1;
@@ -49,7 +54,7 @@ body {
 
 @keyframes crawl {
   0% {
-    top: -100px;
+    top: -300px;
     transform: rotateX(20deg)  translateZ(0);
   }
   100% { 
